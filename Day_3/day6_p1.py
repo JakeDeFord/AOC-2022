@@ -2,7 +2,8 @@ import os
 import sys
 
 
-sys.setrecursionlimit(5000)
+sys.setrecursionlimit(6000)
+print(sys.getrecursionlimit())
 
 def check_duplicates(datastream_buffer: str):
     for i in datastream_buffer:
@@ -12,13 +13,13 @@ def check_duplicates(datastream_buffer: str):
         
     return False
         
-def factorial_search(string_list: list, current_idx) :
+def recursion_search(string_list: list, current_idx) :
     if not check_duplicates(string_list[:4]):
         print(current_idx+4)
     else:
         string_list = string_list[1:]
         current_idx += 1
-        factorial_search(string_list, current_idx)
+        recursion_search(string_list, current_idx)
 
 
 filepath = os.getcwd()
@@ -28,4 +29,6 @@ with open(filepath+"\\AOC-2022\\Day_6\\input.txt", "r") as file:
 
 datastream_buffer = lines[0]
 
-factorial_search(datastream_buffer,0)
+print(len(datastream_buffer))
+
+recursion_search(datastream_buffer,0)
